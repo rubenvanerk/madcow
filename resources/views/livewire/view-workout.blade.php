@@ -23,7 +23,7 @@
 
                     <div class="flex space-x-3 overflow-scroll">
                         @foreach($sets as $set)
-                            <livewire:set-button :set="$set"/>
+                            <livewire:set-button :set="$set" :wire:key="$set->id"/>
                         @endforeach
                     </div>
                 </div>
