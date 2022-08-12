@@ -12,6 +12,9 @@ class Workout extends Model
 
     public $guarded = ['id'];
 
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'started_at',
         'completed_at',

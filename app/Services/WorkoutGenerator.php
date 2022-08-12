@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Str;
 
 class WorkoutGenerator
 {
@@ -18,6 +19,9 @@ class WorkoutGenerator
 
     protected string $weekColumnMap = 'EFGHIJKLMNOP';
 
+    /**
+     * @var array<string, int>
+     */
     protected array $exerciseIndex = [
         'squat' => 0,
         'bench_press' => 1,
@@ -26,18 +30,27 @@ class WorkoutGenerator
         'deadlift' => 2,
     ];
 
+    /**
+     * @var array<int, int>
+     */
     protected array $dayRowMap = [
         Carbon::MONDAY => 10,
         Carbon::WEDNESDAY => 25,
         Carbon::FRIDAY => 37,
     ];
 
+    /**
+     * @var array<int, int>
+     */
     protected array $setsByDay = [
         Carbon::MONDAY => 5,
         Carbon::WEDNESDAY => 4,
         Carbon::FRIDAY => 6,
     ];
 
+    /**
+     * @var array<int, string[]>
+     */
     protected array $workoutsByDay = [
         Carbon::MONDAY => [
             'squat',
@@ -53,9 +66,12 @@ class WorkoutGenerator
             'squat',
             'bench_press',
             'row',
-        ]
+        ],
     ];
 
+    /**
+     * @var array<string, int>
+     */
     protected array $repMaxRows = [
         'squat' => 9,
         'bench_press' => 10,
@@ -96,7 +112,7 @@ class WorkoutGenerator
      * @param  int  $day
      * @param  int  $week
      * @param  RepMax  $repMax
-     * @return Collection
+     * @return Collection<int, Set>
      */
     public function generateSets(int $week, int $day, RepMax $repMax): Collection
     {
@@ -106,20 +122,27 @@ class WorkoutGenerator
         $programSheet = $spreadsheet->getSheetByName('Madcow Program');
 
         if (! $inputSheet || ! $programSheet) {
-            return collect();
+            return new Collection();
         }
 
         $row = $this->repMaxRows[$repMax->exercise->value];
 
-        $inputSheet->setCellValue('C' . $row, $repMax->weight);
-        $inputSheet->setCellValue('D' . $row, $repMax->reps);
+        $inputSheet->setCellValue('C'.$row, $repMax->weight);
+        $inputSheet->setCellValue('D'.$row, $repMax->reps);
 
         return $this->getSets($programSheet, $repMax->exercise, $week, $day);
     }
 
-    private function getSets(Worksheet $programSheet, Exercise $exercise, int $week, int $day)
+    /**
+     * @param Worksheet $programSheet
+     * @param Exercise $exercise
+     * @param int $week
+     * @param int $day
+     * @return Collection<int, Set>
+     */
+    private function getSets(Worksheet $programSheet, Exercise $exercise, int $week, int $day): Collection
     {
-        $column = str($this->weekColumnMap)->substr($week - 1, 1)->toString();
+        $column = Str::of($this->weekColumnMap)->substr($week - 1, 1)->toString();
         $numberOfSets = $this->setsByDay[$day];
         $exerciseOffset = $this->exerciseIndex[$exercise->value];
         $rowStart = $this->dayRowMap[$day] + $exerciseOffset * $numberOfSets;
@@ -127,7 +150,7 @@ class WorkoutGenerator
 
         $setReps = array_column($programSheet->rangeToArray("D$rowStart:D{$rowEnd}"), 0);
         $setWeights = array_column($programSheet->rangeToArray("{$column}{$rowStart}:{$column}{$rowEnd}"), 0);
-        $sets = collect();
+        $sets = new Collection();
 
         for ($i = 0; $i < $numberOfSets; $i++) {
             $sets->add(new Set([

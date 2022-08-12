@@ -3,16 +3,17 @@
 namespace App\Http\Livewire;
 
 use App\Models\Set;
-use Livewire\Component;
 use App\Models\Workout as WorkoutModel;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
-class Workout extends Component
+class ViewWorkout extends Component
 {
     public WorkoutModel $workout;
 
-    public function render()
+    public function render(): View
     {
-        return view('livewire.workout');
+        return view('livewire.view-workout');
     }
 
     public function updateCompletedReps(Set $set): void
@@ -23,11 +24,13 @@ class Workout extends Component
 
         if ($set->completed_reps === 0) {
             $set->update(['completed_reps' => null]);
+
             return;
         }
 
         if ($set->completed_reps === null) {
             $set->update(['completed_reps' => $set->target_reps]);
+
             return;
         }
 

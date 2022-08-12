@@ -31,6 +31,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'rep_maxes' => RepMaxCollection::class,
     ];
 
+    /**
+     * @return HasMany<Workout>
+     */
     public function workouts(): HasMany
     {
         return $this->hasMany(Workout::class, 'user_id');

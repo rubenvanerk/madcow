@@ -7,3 +7,6 @@ parameters:
         - app
 
     level: 9
+
+    ignoreErrors:
+        -  '#Cannot access offset string on App\\Casts\\RepMaxCollection\|null#'
