@@ -28,6 +28,12 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link :href="route('rep-maxes')">
+                                Update 1RMs
+                            </x-dropdown-link>
+
+                            <hr>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

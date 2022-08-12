@@ -17,6 +17,8 @@ class ListWorkouts extends Component
      */
     public Collection $workouts;
 
+    public Collection $setsByExercise;
+
     public function mount(Request $request): void
     {
         /** @var User $user */

@@ -4,27 +4,35 @@
     $exercises = $workout->sets->groupBy('exercise');
 @endphp
 
-<div {{ $attributes->class('flex-col divide-y-2') }}>
+<div {{ $attributes }}>
 
-    <h2 class="text-2xl">{{ \Carbon\Carbon::getDays()[$workout->day] }}</h2>
+    <h2 class="text-2xl font-medium mb-2">{{ \Carbon\Carbon::getDays()[$workout->day] }}</h2>
 
-    @foreach($exercises as $exerciseSets)
-        @php
-            $exercise = $exerciseSets->first()->exercise;
-        @endphp
+    <div class="flex-col space-y-5">
+        @foreach($exercises as $exerciseSets)
+            @php
+                $exercise = \App\Enums\Exercise::from($exerciseSets->first()->exercise);
+            @endphp
 
-        <div>
-            <h3>{{ $exercise }}</h3>
-            <ul>
-                @foreach($exerciseSets as $set)
-                    <li>{{ $set->target_reps }} x {{ $set->weight }}</li>
-                @endforeach
-            </ul>
-        </div>
+            <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 mb-1">{{ $exercise->name() }}</h2>
+                <div class="flex space-x-3 overflow-scroll">
+                    @foreach($exerciseSets as $set)
+                        <span
+                            class="rounded-full h-12 w-12 flex justify-around items-center flex-col shrink-0 bg-gray-900">
+                            <span class="text-white text-xs -mt-0.5 font-semibold">{{ $set->target_reps }}</span>
+                            <span class="text-white text-xs -mt-6">{{ $set->weight }}kg</span>
+                        </span>
+                    @endforeach
+                </div>
+            </div>
 
-    @endforeach
+        @endforeach
+    </div>
 
-    <a href="{{ route('workout', [$workout]) }}" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Start
-    </a>
+    <div class="flex justify-end">
+        <x-button href="{{ route('workout', [$workout]) }}" class="mt-2">
+            Start
+        </x-button>
+    </div>
 </div>

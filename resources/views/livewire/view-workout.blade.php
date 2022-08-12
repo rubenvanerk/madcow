@@ -16,15 +16,19 @@
             <span x-text="(String(Math.round((current - start) / 1000) % 60)).padStart(2, '0')"></span>
         </div>
 
-        @foreach($setsByExercise as $exercise => $sets)
-            <h2>{{ $exercise }}</h2>
+        <div class="flex-col space-y-5">
+            @foreach($setsByExercise as $exercise => $sets)
+                <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                    <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 mb-1">{{ \App\Enums\Exercise::from($exercise)->name() }}</h2>
 
-            <div class="flex space-x-3 overflow-scroll">
-                @foreach($sets as $set)
-                    <livewire:set-button :set="$set"/>
-                @endforeach
-            </div>
-        @endforeach
+                    <div class="flex space-x-3 overflow-scroll">
+                        @foreach($sets as $set)
+                            <livewire:set-button :set="$set"/>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
     </div>
 
