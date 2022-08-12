@@ -134,10 +134,10 @@ class WorkoutGenerator
     }
 
     /**
-     * @param Worksheet $programSheet
-     * @param Exercise $exercise
-     * @param int $week
-     * @param int $day
+     * @param  Worksheet  $programSheet
+     * @param  Exercise  $exercise
+     * @param  int  $week
+     * @param  int  $day
      * @return Collection<int, Set>
      */
     protected function getSets(Worksheet $programSheet, Exercise $exercise, int $week, int $day): Collection

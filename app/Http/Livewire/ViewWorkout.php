@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Set;
 use App\Models\Workout;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class ViewWorkout extends Component

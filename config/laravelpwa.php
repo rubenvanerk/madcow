@@ -9,40 +9,40 @@ return [
         'background_color' => '#f3f4f6',
         'theme_color' => '#064f3c',
         'display' => 'standalone',
-        'orientation'=> 'any',
-        'status_bar'=> 'black',
+        'orientation' => 'any',
+        'status_bar' => 'black',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icon/android-icon-72x72.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '96x96' => [
                 'path' => '/images/icon/android-icon-96x96.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '128x128' => [
                 'path' => '/images/icon/pwa-128x128.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '144x144' => [
                 'path' => '/images/icon/android-icon-144x144.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '152x152' => [
                 'path' => '/images/icon/apple-icon-152x152.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '192x192' => [
                 'path' => '/images/icon/android-icon-192x192.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '384x384' => [
                 'path' => '/images/icon/pwa-384x384.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '512x512' => [
                 'path' => '/images/logo.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
         ],
         'splash' => [
@@ -58,6 +58,6 @@ return [
             '2048x2732' => '/images/icons/splash-2048x2732.png',
         ],
         'shortcuts' => [],
-        'custom' => []
-    ]
+        'custom' => [],
+    ],
 ];
