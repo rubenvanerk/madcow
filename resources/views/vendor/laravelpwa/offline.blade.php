@@ -1,7 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-
+<x-guest-layout>
     <h1>You are currently not connected to any networks.</h1>
-
-@endsection
+</x-guest-layout>
