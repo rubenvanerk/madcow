@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'Madcow',
     'manifest' => [
         'name' => env('APP_NAME', 'Madcow'),
         'short_name' => 'MC',
