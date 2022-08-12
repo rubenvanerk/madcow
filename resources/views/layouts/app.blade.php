@@ -14,6 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
+        @laravelPWA
     </head>
     <body class="font-sans antialiased h-full">
         <div class="min-h-screen bg-gray-100">
