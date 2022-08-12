@@ -9,3 +9,8 @@ composer install
 composer setup
 php artisan serve
 ```
+
+
+<a href="https://www.flaticon.com/free-icon/cow-skull_1099104">
+    Logo created by fjstudio - Flaticon
+</a>

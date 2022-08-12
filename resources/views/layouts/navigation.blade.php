@@ -4,7 +4,7 @@
             <div class="flex">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="h-8 w-auto text-emerald-900"/>
+                        <x-application-logo class="h-12 w-auto "/>
                     </a>
                 </div>
                 <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
