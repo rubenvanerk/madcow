@@ -91,7 +91,7 @@ class WorkoutGenerator
         }
     }
 
-    public function generateWorkout(int $week, int $day): Workout
+    protected function generateWorkout(int $week, int $day): Workout
     {
         $exercises = $this->workoutsByDay[$day];
 
@@ -114,7 +114,7 @@ class WorkoutGenerator
      * @param  RepMax  $repMax
      * @return Collection<int, Set>
      */
-    public function generateSets(int $week, int $day, RepMax $repMax): Collection
+    protected function generateSets(int $week, int $day, RepMax $repMax): Collection
     {
         $spreadsheet = IOFactory::load(app_path('Data/stronglifts-madcow-5x5.xls'));
 
@@ -140,7 +140,7 @@ class WorkoutGenerator
      * @param int $day
      * @return Collection<int, Set>
      */
-    private function getSets(Worksheet $programSheet, Exercise $exercise, int $week, int $day): Collection
+    protected function getSets(Worksheet $programSheet, Exercise $exercise, int $week, int $day): Collection
     {
         $column = Str::of($this->weekColumnMap)->substr($week - 1, 1)->toString();
         $numberOfSets = $this->setsByDay[$day];
