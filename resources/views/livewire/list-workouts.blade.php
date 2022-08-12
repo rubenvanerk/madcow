@@ -1,5 +1,5 @@
 <div>
-    <div class="flex-col space-y-5 mt-5">
+    <div class="flex-col space-y-5">
 
         @if(auth()->user()->rep_maxes->isNotEmpty())
             <x-button

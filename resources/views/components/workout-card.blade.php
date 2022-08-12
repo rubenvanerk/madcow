@@ -14,9 +14,9 @@
                 $exercise = \App\Enums\Exercise::from($exerciseSets->first()->exercise);
             @endphp
 
-            <div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
-                <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 mb-1">{{ $exercise->name() }}</h2>
-                <div class="flex space-x-3 overflow-scroll">
+            <div class="px-4 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 py-3">{{ $exercise->name() }}</h2>
+                <div class="flex space-x-3 overflow-scroll pb-5">
                     @foreach($exerciseSets as $set)
                         <span
                             class="rounded-full h-12 w-12 flex justify-around items-center flex-col shrink-0 bg-gray-900">
@@ -30,8 +30,8 @@
         @endforeach
     </div>
 
-    <div class="flex justify-end">
-        <x-button href="{{ route('workout', [$workout]) }}" class="mt-2">
+    <div class="flex justify-end mt-3">
+        <x-button href="{{ route('workout', [$workout]) }}">
             Start
         </x-button>
     </div>
