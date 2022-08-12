@@ -3,38 +3,20 @@
 namespace App\Http\Livewire;
 
 use App\Models\Set;
-use App\Models\Workout as WorkoutModel;
+use App\Models\Workout;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class ViewWorkout extends Component
 {
-    public WorkoutModel $workout;
+    public Workout $workout;
 
     public function render(): View
     {
-        return view('livewire.view-workout');
-    }
+        $setsByExercise = $this->workout->sets()->get()->groupBy('exercise');
 
-    public function updateCompletedReps(Set $set): void
-    {
-        if ($this->workout->started_at === null) {
-            $this->workout->touch('started_at');
-        }
-
-        if ($set->completed_reps === 0) {
-            $set->update(['completed_reps' => null]);
-
-            return;
-        }
-
-        if ($set->completed_reps === null) {
-            $set->update(['completed_reps' => $set->target_reps]);
-
-            return;
-        }
-
-        $set->decrement('completed_reps');
+        return view('livewire.view-workout', compact('setsByExercise'));
     }
 
     public function toggleCompletedAt(): void
