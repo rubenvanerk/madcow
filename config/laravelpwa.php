@@ -5,7 +5,7 @@ return [
     'manifest' => [
         'name' => env('APP_NAME', 'Madcow'),
         'short_name' => 'MC',
-        'start_url' => '/dashboard',
+        'start_url' => '/',
         'background_color' => '#f3f4f6',
         'theme_color' => '#064f3c',
         'display' => 'standalone',
