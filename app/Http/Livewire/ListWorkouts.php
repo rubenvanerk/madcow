@@ -19,12 +19,18 @@ class ListWorkouts extends Component
 
     public Collection $setsByExercise;
 
+    public bool $past = false;
+
     public function mount(Request $request): void
     {
         /** @var User $user */
         $user = $request->user();
 
-        $this->workouts = $user->workouts()->whereNull('completed_at')->with('sets')->get();
+        if ($this->past) {
+            $this->workouts = $user->workouts()->whereNotNull('completed_at')->with('sets')->get();
+        } else {
+            $this->workouts = $user->workouts()->whereNull('completed_at')->with('sets')->get();
+        }
     }
 
     public function render(): View
