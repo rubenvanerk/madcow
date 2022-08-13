@@ -10,11 +10,13 @@
         interval: null
     }">
 
-        <div class="mb-4 ml-2">
-            <x-label>Current rest:</x-label>
-            <span x-text="String(Math.floor((current - start) / 1000 / 60)).padStart(2, '0')"></span> :
-            <span x-text="(String(Math.round((current - start) / 1000) % 60)).padStart(2, '0')"></span>
-        </div>
+        @if ($workout->completed_at !== null)
+            <div class="mb-4 ml-2">
+                <x-label>Current rest:</x-label>
+                <span x-text="String(Math.floor((current - start) / 1000 / 60)).padStart(2, '0')"></span> :
+                <span x-text="(String(Math.round((current - start) / 1000) % 60)).padStart(2, '0')"></span>
+            </div>
+        @endif
 
         <div class="flex-col space-y-5">
             @foreach($setsByExercise as $exercise => $sets)
