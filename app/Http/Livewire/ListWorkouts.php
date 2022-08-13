@@ -27,7 +27,7 @@ class ListWorkouts extends Component
         $user = $request->user();
 
         if ($this->past) {
-            $this->workouts = $user->workouts()->whereNotNull('completed_at')->with('sets')->get();
+            $this->workouts = $user->workouts()->whereNotNull('completed_at')->orderBy('completed_at', 'desc')->with('sets')->get();
         } else {
             $this->workouts = $user->workouts()->whereNull('completed_at')->with('sets')->get();
         }
