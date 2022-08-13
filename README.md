@@ -1,8 +1,8 @@
-<p align="center"><img src="/art/logo.png" width="50%" alt="Logo"></p>
+<p align="center"><img src="art/logo.png" width="20%" alt="Logo"></p>
 
 <p align="center">
-    <img src="/art/screenshots/workout-list.png" alt="Workout List" style="width:30%;">
-    <img src="/art/screenshots/workout-view.png" alt="Workout View" style="width:30%;">
+    <img src="art/screenshots/workout-list.png" alt="Workout List" style="width:20%;">
+    <img src="art/screenshots/workout-view.png" alt="Workout View" style="width:20%;">
 </p>
 
 # Madcow
