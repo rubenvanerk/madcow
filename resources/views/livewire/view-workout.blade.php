@@ -10,7 +10,7 @@
         interval: null
     }">
 
-        @if ($workout->completed_at !== null)
+        @if ($workout->completed_at === null)
             <div class="mb-4 ml-2">
                 <x-label>Current rest:</x-label>
                 <span x-text="String(Math.floor((current - start) / 1000 / 60)).padStart(2, '0')"></span> :
