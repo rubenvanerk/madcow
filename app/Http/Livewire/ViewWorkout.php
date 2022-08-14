@@ -13,7 +13,7 @@ class ViewWorkout extends Component
 
     public function render(Request $request): View
     {
-        abort_if($request->user()->id !== $this->workout->user->id, 403);
+        abort_if($request->user()?->id !== $this->workout->user?->id, 403);
 
         $setsByExercise = $this->workout->sets()->get()->groupBy('exercise');
 
