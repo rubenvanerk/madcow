@@ -17,9 +17,9 @@
                 $exercise = \App\Enums\Exercise::from($exerciseSets->first()->exercise);
             @endphp
 
-            <div class="px-4 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+            <div class="px-4 bg-white shadow rounded-lg overflow-hidden">
                 <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 py-3">{{ $exercise->name() }}</h2>
-                <div class="flex space-x-3 overflow-scroll pb-5">
+                <div class="flex space-x-3 overflow-scroll md:overflow-auto pb-5">
                     @foreach($exerciseSets as $set)
                         <span class="rounded-full h-12 w-12 flex justify-around items-center flex-col shrink-0
                         @if($set->completed_reps === $set->target_reps) bg-emerald-900 @endif

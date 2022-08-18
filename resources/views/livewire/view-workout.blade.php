@@ -20,10 +20,10 @@
 
         <div class="flex-col space-y-5">
             @foreach($setsByExercise as $exercise => $sets)
-                <div class="px-4 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                <div class="px-4 bg-white shadow rounded-lg">
                     <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 py-3">{{ \App\Enums\Exercise::from($exercise)->name() }}</h2>
 
-                    <div class="flex space-x-3 overflow-scroll pb-5">
+                    <div class="flex space-x-3 overflow-scroll md:overflow-hidden pb-5">
                         @foreach($sets as $set)
                             <livewire:set-button :set="$set" :wire:key="$set->id"/>
                         @endforeach

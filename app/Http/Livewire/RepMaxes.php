@@ -36,8 +36,8 @@ class RepMaxes extends Component
     {
         return collect(Exercise::cases())
             ->mapWithKeys(fn (Exercise $exercise) => [
-                'user.rep_maxes.'.$exercise->value.'.weight' => ['number', 'min:1'],
-                'user.rep_maxes.'.$exercise->value.'.reps' => ['number', 'min:1', 'max:10'],
+                'user.rep_maxes.'.$exercise->value.'.weight' => ['required', 'number', 'min:1'],
+                'user.rep_maxes.'.$exercise->value.'.reps' => ['required', 'number', 'min:1', 'max:10'],
             ]);
     }
 

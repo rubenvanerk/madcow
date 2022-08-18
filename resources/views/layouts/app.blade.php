@@ -20,7 +20,7 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <div class="min-h-full">
+            <div class="min-h-full max-w-2xl mx-auto">
                 <div class="py-5">
                     @if(isset($header))
                         <header>
