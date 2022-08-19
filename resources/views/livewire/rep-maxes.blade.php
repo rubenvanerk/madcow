@@ -13,16 +13,15 @@
                     <div class="flex space-x-5 mt-1">
                         <div class="w-full">
                             <x-input id="{[ $repMax->exercise->value }}" class="block w-full" type="number" required
-                                     min="1"
-                                     autocomplete="off"
+                                     min="1" autocomplete="off"
                                      wire:model="user.rep_maxes.{{ $repMax->exercise->value }}.weight"
                             />
 
-                            <div class="text-sm text-gray-700 mt-1">1RM: {{ $repMax->getOneRepMax() }}</div>
+                            <div class="text-sm text-gray-700 dark:text-gray-300 mt-1">1RM: {{ $repMax->getOneRepMax() }}</div>
                         </div>
 
                         <select wire:model="user.rep_maxes.{{ $repMax->exercise->value }}.reps"
-                                class="pl-3 pr-10 h-10 text-base border-gray-300 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm rounded-md">
+                                class="pl-3 pr-10 h-10 text-base border-gray-300 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700">
                             @foreach(range(1, 10) as $reps)
                                 <option>{{ $reps }}</option>
                             @endforeach

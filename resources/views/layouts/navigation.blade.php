@@ -1,10 +1,10 @@
-<nav class="bg-white shadow-sm" x-data="{ open: false }">
+<nav class="bg-white dark:bg-gray-800 shadow-sm" x-data="{ open: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="h-12 w-auto "/>
+                        <x-application-logo class="h-12 w-auto"/>
                     </a>
                 </div>
                 <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
@@ -18,7 +18,7 @@
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out dark:text-gray-300">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -32,7 +32,11 @@
                                 Update 1RMs
                             </x-dropdown-link>
 
-                            <hr>
+                            <hr class="dark:border-gray-500">
+
+                            <x-dropdown-link href="#" x-on:click.prevent="toggleDarkMode()">
+                                Toggle dark mode
+                            </x-dropdown-link>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -78,9 +82,13 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</div>
             </div>
+
+            <x-responsive-nav-link href="#" x-on:click.prevent="toggleDarkMode(! isDark)" class="mt-3">
+                Toggle dark mode
+            </x-responsive-nav-link>
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->

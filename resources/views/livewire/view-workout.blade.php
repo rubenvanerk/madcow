@@ -11,7 +11,7 @@
     }">
 
         @if ($workout->completed_at === null)
-            <div class="mb-4 ml-2">
+            <div class="mb-4 ml-2 text-gray-900 dark:text-gray-200">
                 <x-label>Current rest:</x-label>
                 <span x-text="String(Math.floor((current - start) / 1000 / 60)).padStart(2, '0')"></span> :
                 <span x-text="(String(Math.round((current - start) / 1000) % 60)).padStart(2, '0')"></span>
@@ -20,8 +20,10 @@
 
         <div class="flex-col space-y-5">
             @foreach($setsByExercise as $exercise => $sets)
-                <div class="px-4 bg-white shadow rounded-lg">
-                    <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 py-3">{{ \App\Enums\Exercise::from($exercise)->name() }}</h2>
+                <div class="px-4 bg-white shadow rounded-lg dark:bg-gray-800">
+                    <h2 class="ml-1 text-lg leading-6 font-semibold text-gray-900 py-3 dark:text-gray-200">
+                        {{ \App\Enums\Exercise::from($exercise)->name() }}
+                    </h2>
 
                     <div class="flex space-x-3 overflow-scroll md:overflow-hidden pb-5">
                         @foreach($sets as $set)
@@ -43,7 +45,7 @@
     @if($workout->completed_at !== null)
         <div class="mt-5">
             <x-label>Completed at</x-label>
-            <span>{{ $workout->completed_at->isoFormat('LLL') }}</span>
+            <span class="text-gray-900 dark:text-gray-200">{{ $workout->completed_at->isoFormat('LLL') }}</span>
         </div>
 
     @endif
