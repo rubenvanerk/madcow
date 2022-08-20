@@ -16,6 +16,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @laravelPWA
+
+    @bukStyles(true)
+    @bukScripts(true)
 </head>
 <body class="font-sans antialiased h-full"
       x-data="{

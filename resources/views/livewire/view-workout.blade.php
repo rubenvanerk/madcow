@@ -44,9 +44,8 @@
 
     @if($workout->completed_at !== null)
         <div class="mt-5">
-            <x-label>Completed at</x-label>
-            <span class="text-gray-900 dark:text-gray-200">{{ $workout->completed_at->isoFormat('LLL') }}</span>
+            <x-label>Completed</x-label>
+            <x-carbon :date="$workout->completed_at" local="LLL" class="text-gray-900 dark:text-gray-200"/>
         </div>
-
     @endif
 </div>

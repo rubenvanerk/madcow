@@ -8,7 +8,9 @@
 
     <div class="flex items-center justify-between">
         <h2 class="text-2xl font-medium mb-2 text-gray-900 dark:text-gray-200">{{ \Carbon\Carbon::getDays()[$workout->day] }}</h2>
-        <span class="text-sm text-gray-600 dark:text-gray-400">{{ $workout->completed_at?->isoFormat('LLL') }}</span>
+        @if ($workout->completed_at !== null)
+            <x-carbon :date="$workout->completed_at" local="LLL" class="text-sm text-gray-600 dark:text-gray-400"/>
+        @endif
     </div>
 
     <div class="flex-col space-y-5">
