@@ -25,7 +25,7 @@
                         {{ \App\Enums\Exercise::from($exercise)->name() }}
                     </h2>
 
-                    <div class="flex space-x-3 overflow-scroll md:overflow-hidden pb-5">
+                    <div class="flex space-x-3 overflow-scroll md:overflow-hidden pb-5 pt-1 pl-1">
                         @foreach($sets as $set)
                             <livewire:set-button :set="$set" :wire:key="$set->id"/>
                         @endforeach

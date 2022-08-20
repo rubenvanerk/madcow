@@ -1,7 +1,7 @@
 <div>
     <button
         x-data="{ completedReps: @entangle('completedReps'), targetReps: {{ $set->target_reps }} }"
-        class="rounded-full h-14 w-14 flex justify-around items-center flex-col shrink-0 focus:outline-none shadow"
+        class="rounded-full h-14 w-14 flex justify-around items-center flex-col shrink-0 focus:outline-none drop-shadow-line drop-shadow-line inset-y-1 -translate-y-1 transition hover:translate-x-0 hover:translate-y-0 hover:drop-shadow-none focus:translate-x-0 focus:translate-y-0 focus:drop-shadow-none"
         :class="{
                 'bg-emerald-900': targetReps === completedReps,
                 'bg-emerald-600': completedReps !== null && completedReps < targetReps,
